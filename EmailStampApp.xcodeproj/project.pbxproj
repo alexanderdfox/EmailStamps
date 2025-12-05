@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		025EB7FB2EE26517000EDDBD /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025EB7FA2EE26517000EDDBD /* CryptoKit.framework */; };
+		025EB7FD2EE2651C000EDDBD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025EB7FC2EE2651C000EDDBD /* CoreImage.framework */; };
+		AA000001 /* EmailStampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002 /* EmailStampApp.swift */; };
+		AA00001E /* EmailStampGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00001F /* EmailStampGenerator.swift */; };
+		0287D75A2EE2747B0019F4F6 /* EmailStampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002 /* EmailStampApp.swift */; };
+		0287D75B2EE2747B0019F4F6 /* EmailStampGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00001F /* EmailStampGenerator.swift */; };
+		0287D75C2EE2747B0019F4F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000022 /* ContentView.swift */; };
+		0287D75D2EE2747B0019F4F6 /* EmailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000023 /* EmailComposeView.swift */; };
+		0287D75E2EE2747B0019F4F6 /* EmailComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000024 /* EmailComposeViewModel.swift */; };
+		0287D75F2EE2747B0019F4F6 /* StampImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000025 /* StampImagePickerView.swift */; };
+		0287D7602EE2747B0019F4F6 /* HTMLPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000026 /* HTMLPreviewView.swift */; };
+		0287D7612EE2747B0019F4F6 /* PGPSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00003F /* PGPSettingsView.swift */; };
+		0287D7622EE2747B0019F4F6 /* HeaderFooterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000042 /* HeaderFooterSettingsView.swift */; };
+		0287D7632EE2747B0019F4F6 /* EmailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000030 /* EmailItem.swift */; };
+		0287D7642EE2747B0019F4F6 /* PGPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000031 /* PGPSettings.swift */; };
+		0287D7702EE2747B0019F4F6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000032 /* Theme.swift */; };
+		0287D7712EE2747B0019F4F6 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000033 /* Platform.swift */; };
+		0287D7722EE2747B0019F4F6 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000034 /* Security.swift */; };
+		AA000020 /* MailKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA000021 /* MailKit.framework */; };
+		AA000027 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000022 /* ContentView.swift */; };
+		AA000028 /* EmailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000023 /* EmailComposeView.swift */; };
+		AA00002A /* StampImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000025 /* StampImagePickerView.swift */; };
+		AA00002B /* HTMLPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000026 /* HTMLPreviewView.swift */; };
+		AA000035 /* EmailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000030 /* EmailItem.swift */; };
+		AA000036 /* PGPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000031 /* PGPSettings.swift */; };
+		AA000037 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000032 /* Theme.swift */; };
+		AA000038 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000033 /* Platform.swift */; };
+		AA000039 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000034 /* Security.swift */; };
+		AA00003A /* EmailComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000024 /* EmailComposeViewModel.swift */; };
+		AA000040 /* PGPSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00003F /* PGPSettingsView.swift */; };
+		AA000041 /* HeaderFooterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000042 /* HeaderFooterSettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		025EB7FA2EE26517000EDDBD /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
+		025EB7FC2EE2651C000EDDBD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		0287D7692EE2747B0019F4F6 /* EmailStamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmailStamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000002 /* EmailStampApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailStampApp.swift; sourceTree = "<group>"; };
+		AA000009 /* EmailStampApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmailStampApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA00000A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA00001B /* EmailStampApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmailStampApp.entitlements; sourceTree = "<group>"; };
+		AA00001F /* EmailStampGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailStampGenerator.swift; sourceTree = "<group>"; };
+		AA000021 /* MailKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MailKit.framework; path = System/Library/Frameworks/MailKit.framework; sourceTree = SDKROOT; };
+		AA000022 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA000023 /* EmailComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailComposeView.swift; sourceTree = "<group>"; };
+		AA000024 /* EmailComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailComposeViewModel.swift; sourceTree = "<group>"; };
+		AA000025 /* StampImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampImagePickerView.swift; sourceTree = "<group>"; };
+		AA000026 /* HTMLPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLPreviewView.swift; sourceTree = "<group>"; };
+		AA000030 /* EmailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailItem.swift; sourceTree = "<group>"; };
+		AA000031 /* PGPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPSettings.swift; sourceTree = "<group>"; };
+		AA000032 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		AA000033 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		AA000034 /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		AA00003F /* PGPSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPSettingsView.swift; sourceTree = "<group>"; };
+		AA000042 /* HeaderFooterSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooterSettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		026D335F2EE271B3004C1BC3 /* Sources/EmailStampApp */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sources/EmailStampApp; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0287D7662EE2747B0019F4F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025EB7FB2EE26517000EDDBD /* CryptoKit.framework in Frameworks */,
+				025EB7FD2EE2651C000EDDBD /* CoreImage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025EB7FD2EE2651C000EDDBD /* CoreImage.framework in Frameworks */,
+				025EB7FB2EE26517000EDDBD /* CryptoKit.framework in Frameworks */,
+				AA000020 /* MailKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		025EB7F82EE264F6000EDDBD /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				AA000021 /* MailKit.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		025EB7F92EE26517000EDDBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				025EB7FC2EE2651C000EDDBD /* CoreImage.framework */,
+				025EB7FA2EE26517000EDDBD /* CryptoKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA00000B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000C /* EmailStampApp */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AA00000C /* EmailStampApp */ = {
+			isa = PBXGroup;
+			children = (
+				AA000002 /* EmailStampApp.swift */,
+				AA00003B /* Models */,
+				AA00003C /* ViewModels */,
+				AA00003D /* Utilities */,
+				AA00003E /* Views */,
+				AA000022 /* ContentView.swift */,
+				AA000023 /* EmailComposeView.swift */,
+				AA000025 /* StampImagePickerView.swift */,
+				AA000026 /* HTMLPreviewView.swift */,
+			);
+			path = EmailStampApp;
+			sourceTree = "<group>";
+		};
+		AA00000E = {
+			isa = PBXGroup;
+			children = (
+				AA00000B /* Sources */,
+				AA00000A /* Info.plist */,
+				AA00001B /* EmailStampApp.entitlements */,
+				026D335F2EE271B3004C1BC3 /* Sources/EmailStampApp */,
+				AA000010 /* Products */,
+				025EB7F82EE264F6000EDDBD /* Recovered References */,
+				025EB7F92EE26517000EDDBD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA000010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA000009 /* EmailStampApp.app */,
+				0287D7692EE2747B0019F4F6 /* EmailStamps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA00003B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA000030 /* EmailItem.swift */,
+				AA000031 /* PGPSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA00003C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA000024 /* EmailComposeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AA00003D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA00001F /* EmailStampGenerator.swift */,
+				AA000032 /* Theme.swift */,
+				AA000033 /* Platform.swift */,
+				AA000034 /* Security.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AA00003E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA00003F /* PGPSettingsView.swift */,
+				AA000042 /* HeaderFooterSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0287D7682EE2747B0019F4F6 /* EmailStamps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0287D7742EE2747C0019F4F6 /* Build configuration list for PBXNativeTarget "EmailStamps" */;
+			buildPhases = (
+				0287D7652EE2747B0019F4F6 /* Sources */,
+				0287D7662EE2747B0019F4F6 /* Frameworks */,
+				0287D7672EE2747B0019F4F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmailStamps;
+			packageProductDependencies = (
+			);
+			productName = EmailStamps;
+			productReference = 0287D7692EE2747B0019F4F6 /* EmailStamps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA000011 /* EmailStampApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000012 /* Build configuration list for PBXNativeTarget "EmailStampApp" */;
+			buildPhases = (
+				AA000013 /* Sources */,
+				AA00000D /* Frameworks */,
+				AA000014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmailStampApp;
+			productName = EmailStampApp;
+			productReference = AA000009 /* EmailStampApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA000015 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					0287D7682EE2747B0019F4F6 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+				};
+			};
+			buildConfigurationList = AA000016 /* Build configuration list for PBXProject "EmailStampApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA00000E;
+			productRefGroup = AA000010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA000011 /* EmailStampApp */,
+				0287D7682EE2747B0019F4F6 /* EmailStamps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0287D7672EE2747B0019F4F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0287D7652EE2747B0019F4F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0287D75A2EE2747B0019F4F6 /* EmailStampApp.swift in Sources */,
+				0287D75B2EE2747B0019F4F6 /* EmailStampGenerator.swift in Sources */,
+				0287D75C2EE2747B0019F4F6 /* ContentView.swift in Sources */,
+				0287D75D2EE2747B0019F4F6 /* EmailComposeView.swift in Sources */,
+				0287D75E2EE2747B0019F4F6 /* EmailComposeViewModel.swift in Sources */,
+				0287D75F2EE2747B0019F4F6 /* StampImagePickerView.swift in Sources */,
+				0287D7602EE2747B0019F4F6 /* HTMLPreviewView.swift in Sources */,
+				0287D7612EE2747B0019F4F6 /* PGPSettingsView.swift in Sources */,
+				0287D7622EE2747B0019F4F6 /* HeaderFooterSettingsView.swift in Sources */,
+				0287D7632EE2747B0019F4F6 /* EmailItem.swift in Sources */,
+				0287D7642EE2747B0019F4F6 /* PGPSettings.swift in Sources */,
+				0287D7702EE2747B0019F4F6 /* Theme.swift in Sources */,
+				0287D7712EE2747B0019F4F6 /* Platform.swift in Sources */,
+				0287D7722EE2747B0019F4F6 /* Security.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000013 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001 /* EmailStampApp.swift in Sources */,
+				AA00001E /* EmailStampGenerator.swift in Sources */,
+				AA000027 /* ContentView.swift in Sources */,
+				AA000028 /* EmailComposeView.swift in Sources */,
+				AA00003A /* EmailComposeViewModel.swift in Sources */,
+				AA00002A /* StampImagePickerView.swift in Sources */,
+				AA00002B /* HTMLPreviewView.swift in Sources */,
+				AA000040 /* PGPSettingsView.swift in Sources */,
+				AA000041 /* HeaderFooterSettingsView.swift in Sources */,
+				AA000035 /* EmailItem.swift in Sources */,
+				AA000036 /* PGPSettings.swift in Sources */,
+				AA000037 /* Theme.swift in Sources */,
+				AA000038 /* Platform.swift in Sources */,
+				AA000039 /* Security.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0287D7752EE2747C0019F4F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSAG5KPFBE;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tchoff.EmailStamps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		0287D7762EE2747C0019F4F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSAG5KPFBE;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tchoff.EmailStamps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		AA000017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA000018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AA000019 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EmailStampApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = MSAG5KPFBE;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emailstamp.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA00001A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EmailStampApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = MSAG5KPFBE;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emailstamp.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0287D7742EE2747C0019F4F6 /* Build configuration list for PBXNativeTarget "EmailStamps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0287D7752EE2747C0019F4F6 /* Debug */,
+				0287D7762EE2747C0019F4F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000012 /* Build configuration list for PBXNativeTarget "EmailStampApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000019 /* Debug */,
+				AA00001A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000016 /* Build configuration list for PBXProject "EmailStampApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000017 /* Debug */,
+				AA000018 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA000015 /* Project object */;
+}
