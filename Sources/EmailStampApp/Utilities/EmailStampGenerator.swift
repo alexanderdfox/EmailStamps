@@ -32,7 +32,7 @@ class EmailStampGenerator {
             hash = providedHash
         } else {
             // Fallback: compute hash from subject and body (for backward compatibility)
-            let emailContent = "Subject: \(subject)\n\n\(body)"
+        let emailContent = "Subject: \(subject)\n\n\(body)"
             hash = computeSHA256(content: emailContent)
         }
         
