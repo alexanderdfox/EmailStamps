@@ -22,15 +22,22 @@ class EmailStampGenerator {
         header: String = "",
         footer: String = "",
         includePGP: Bool = true,
-        pgpSettings: PGPSettings? = nil
+        pgpSettings: PGPSettings? = nil,
+        emailHash: String? = nil
     ) -> String {
         
-        // Compute hash (header and footer are not included in hash for content integrity)
-        let emailContent = "Subject: \(subject)\n\n\(body)"
-        let emailHash = computeSHA256(content: emailContent)
+        // Use provided hash (MIME-level) or compute fallback hash
+        let hash: String
+        if let providedHash = emailHash {
+            hash = providedHash
+        } else {
+            // Fallback: compute hash from subject and body (for backward compatibility)
+            let emailContent = "Subject: \(subject)\n\n\(body)"
+            hash = computeSHA256(content: emailContent)
+        }
         
         // Generate QR code
-        let qrCodeBase64 = generateQRCode(from: emailHash)
+        let qrCodeBase64 = generateQRCode(from: hash)
         
         // Build HTML
         return buildHTMLTemplate(
@@ -38,7 +45,7 @@ class EmailStampGenerator {
             body: body,
             header: header,
             footer: footer,
-            emailHash: emailHash,
+            emailHash: hash,
             qrCodeBase64: qrCodeBase64,
             includePGP: includePGP,
             pgpSettings: pgpSettings

@@ -4,10 +4,29 @@ struct HeaderFooterSettingsView: View {
     @ObservedObject var viewModel: EmailComposeViewModel
     @Environment(\.dismiss) var dismiss
     @State private var useAsDefault: Bool = false
+    var showNavigation: Bool = true
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        Group {
+            if showNavigation {
+                NavigationView {
+                    contentView
+                }
+                #if os(macOS)
+                .frame(width: 700, height: 750)
+                #else
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                #endif
+            } else {
+                ScrollView {
+                    contentView
+                }
+            }
+        }
+    }
+    
+    private var contentView: some View {
+        ScrollView {
                 VStack(spacing: 24) {
                     // Professional Header
                     HStack {
@@ -209,70 +228,67 @@ struct HeaderFooterSettingsView: View {
                             .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
                     )
                     
-                    // Action Buttons
-                    HStack(spacing: 12) {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Text("Cancel")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
+                    // Action Buttons (only show when standalone)
+                    if showNavigation {
+                        HStack(spacing: 12) {
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                Text("Cancel")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.appCard)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.appBorder, lineWidth: 1.5)
+                                            )
+                                    )
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                if useAsDefault {
+                                    viewModel.saveDefaultHeader()
+                                    viewModel.saveDefaultFooter()
+                                }
+                                viewModel.updateHash()
+                                dismiss()
+                            }) {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(size: 14))
+                                    Text("Save")
+                                        .fontWeight(.semibold)
+                                }
+                                .foregroundColor(.white)
                                 .padding(.horizontal, 24)
                                 .padding(.vertical, 12)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.appCard)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.appBorder, lineWidth: 1.5)
-                                        )
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [Color.appPrimary, Color.appSecondary]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
                                 )
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            if useAsDefault {
-                                viewModel.saveDefaultHeader()
-                                viewModel.saveDefaultFooter()
+                                .cornerRadius(10)
+                                .shadow(color: Color.appPrimary.opacity(0.4), radius: 8, x: 0, y: 4)
                             }
-                            viewModel.updateHash()
-                            dismiss()
-                        }) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .font(.system(size: 14))
-                                Text("Save")
-                                    .fontWeight(.semibold)
-                            }
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 12)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [Color.appPrimary, Color.appSecondary]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .cornerRadius(10)
-                            .shadow(color: Color.appPrimary.opacity(0.4), radius: 8, x: 0, y: 4)
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 20)
                 }
                 .padding(.horizontal, 20)
             }
             .background(Color.appBackground)
         }
-        #if os(macOS)
-        .frame(width: 700, height: 750)
-        #else
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        #endif
     }
-}
+
 

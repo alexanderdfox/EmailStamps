@@ -5,10 +5,36 @@ struct PGPSettingsView: View {
     @Binding var settings: PGPSettings
     @Environment(\.dismiss) var dismiss
     @State private var showKeyFilePicker = false
+    var showNavigation: Bool = true
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        Group {
+            if showNavigation {
+                NavigationView {
+                    contentView
+                }
+            } else {
+                ScrollView {
+                    contentView
+                }
+            }
+        }
+        #if os(macOS)
+        .fileImporter(
+            isPresented: $showKeyFilePicker,
+            allowedContentTypes: [.data, .text],
+            allowsMultipleSelection: false
+        ) { result in
+            if case .success(let urls) = result,
+               let url = urls.first {
+                settings.keyFilePath = url.path
+            }
+        }
+        #endif
+    }
+    
+    private var contentView: some View {
+        ScrollView {
                 VStack(spacing: 24) {
                     // Professional Header
                     HStack {
@@ -319,76 +345,66 @@ struct PGPSettingsView: View {
                         )
                     }
                     
-                    // Action Buttons
-                    HStack(spacing: 12) {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Text("Cancel")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
+                    // Action Buttons (only show when standalone)
+                    if showNavigation {
+                        HStack(spacing: 12) {
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                Text("Cancel")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.appCard)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.appBorder, lineWidth: 1.5)
+                                            )
+                                    )
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                settings.saveSettings()
+                                dismiss()
+                            }) {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(size: 14))
+                                    Text("Save Settings")
+                                        .fontWeight(.semibold)
+                                }
+                                .foregroundColor(.white)
                                 .padding(.horizontal, 24)
                                 .padding(.vertical, 12)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.appCard)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.appBorder, lineWidth: 1.5)
-                                        )
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [Color.appPrimary, Color.appSecondary]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
                                 )
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            settings.saveSettings()
-                            dismiss()
-                        }) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .font(.system(size: 14))
-                                Text("Save Settings")
-                                    .fontWeight(.semibold)
+                                .cornerRadius(10)
+                                .shadow(color: Color.appPrimary.opacity(0.4), radius: 8, x: 0, y: 4)
                             }
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 12)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [Color.appPrimary, Color.appSecondary]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .cornerRadius(10)
-                            .shadow(color: Color.appPrimary.opacity(0.4), radius: 8, x: 0, y: 4)
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 20)
                 }
                 .padding(.horizontal, 20)
             }
             .background(Color.appBackground)
+            #if os(macOS)
+            .frame(width: showNavigation ? 700 : nil, height: showNavigation ? 700 : nil)
+            #else
+            .frame(maxWidth: showNavigation ? .infinity : nil, maxHeight: showNavigation ? .infinity : nil)
+            #endif
         }
-        #if os(macOS)
-        .frame(width: 700, height: 700)
-        .fileImporter(
-            isPresented: $showKeyFilePicker,
-            allowedContentTypes: [.data, .text],
-            allowsMultipleSelection: false
-        ) { result in
-            if case .success(let urls) = result,
-               let url = urls.first {
-                settings.keyFilePath = url.path
-            }
-        }
-        #else
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        #endif
-    }
 }
-

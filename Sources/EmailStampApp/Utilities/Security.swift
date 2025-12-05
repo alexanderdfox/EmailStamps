@@ -8,6 +8,8 @@ class SecureStorage {
     
     // Securely store password (Keychain)
     static func storePassword(_ password: String, forKey key: String) -> Bool {
+        // Validate input
+        guard !key.isEmpty else { return false }
         guard let data = password.data(using: .utf8) else { return false }
         
         let query: [String: Any] = [
@@ -18,16 +20,28 @@ class SecureStorage {
             kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
         ]
         
-        // Delete existing item
+        // Delete existing item first (ignore errors)
         SecItemDelete(query as CFDictionary)
         
         // Add new item
         let status = SecItemAdd(query as CFDictionary, nil)
-        return status == errSecSuccess
+        
+        if status != errSecSuccess {
+            // Log error for debugging (in production, use proper logging)
+            #if DEBUG
+            print("Keychain error: \(status) - \(SecCopyErrorMessageString(status, nil) ?? "Unknown error" as CFString)")
+            #endif
+            return false
+        }
+        
+        return true
     }
     
     // Retrieve password from Keychain
     static func retrievePassword(forKey key: String) -> String? {
+        // Validate input
+        guard !key.isEmpty else { return nil }
+        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -39,8 +53,17 @@ class SecureStorage {
         var result: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &result)
         
-        guard status == errSecSuccess,
-              let data = result as? Data,
+        guard status == errSecSuccess else {
+            // Item not found is not an error - just return nil
+            if status != errSecItemNotFound {
+                #if DEBUG
+                print("Keychain retrieve error: \(status)")
+                #endif
+            }
+            return nil
+        }
+        
+        guard let data = result as? Data,
               let password = String(data: data, encoding: .utf8) else {
             return nil
         }
@@ -58,6 +81,20 @@ class SecureStorage {
         
         let status = SecItemDelete(query as CFDictionary)
         return status == errSecSuccess || status == errSecItemNotFound
+    }
+    
+    // Check if password exists in Keychain (without retrieving it)
+    static func hasPassword(forKey key: String) -> Bool {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: key,
+            kSecReturnData as String: false,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        let status = SecItemCopyMatching(query as CFDictionary, nil)
+        return status == errSecSuccess
     }
     
     // Securely wipe data from memory

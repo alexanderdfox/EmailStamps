@@ -1,5 +1,20 @@
 import SwiftUI
 
+extension View {
+    @ViewBuilder
+    func onChangeCompat<T: Equatable>(of value: T, perform action: @escaping () -> Void) -> some View {
+        if #available(macOS 14.0, *) {
+            self.onChange(of: value) { _, _ in
+                action()
+            }
+        } else {
+            self.onChange(of: value, perform: { _ in
+                action()
+            })
+        }
+    }
+}
+
 struct EmailComposeView: View {
     @ObservedObject var viewModel: EmailComposeViewModel
     @State private var showStampPicker = false
@@ -91,26 +106,9 @@ struct EmailComposeView: View {
                         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
                 )
                 
-                // Header/Footer Settings Button
+                // Unified Settings Button
                 Button(action: {
-                    viewModel.showHeaderFooterSettings = true
-                }) {
-                    Image(systemName: "text.alignleft")
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                        .padding(8)
-                        .background(
-                            Circle()
-                                .fill(Color.appCard)
-                                .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
-                        )
-                }
-                .buttonStyle(.plain)
-                .help("Header & Footer Settings")
-                
-                // PGP Settings Button
-                Button(action: {
-                    viewModel.showPGPSettings = true
+                    viewModel.showSettings = true
                 }) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: 13))
@@ -123,7 +121,7 @@ struct EmailComposeView: View {
                         )
                 }
                 .buttonStyle(.plain)
-                .help("Configure PGP signing")
+                .help("Settings")
             }
             .padding(16)
             .background(
@@ -286,16 +284,13 @@ struct EmailComposeView: View {
         .sheet(isPresented: $showStampPicker) {
             StampImagePickerView(selectedImage: $viewModel.stampImage)
         }
-        .sheet(isPresented: $viewModel.showPGPSettings) {
-            PGPSettingsView(settings: $viewModel.pgpSettings)
+        .sheet(isPresented: $viewModel.showSettings) {
+            SettingsView(viewModel: viewModel)
         }
-        .sheet(isPresented: $viewModel.showHeaderFooterSettings) {
-            HeaderFooterSettingsView(viewModel: viewModel)
-        }
-        .onChange(of: viewModel.subject) { oldValue, newValue in
+        .onChangeCompat(of: viewModel.subject) {
             viewModel.updateHash()
         }
-        .onChange(of: viewModel.body) { oldValue, newValue in
+        .onChangeCompat(of: viewModel.body) {
             viewModel.updateHash()
         }
         .onReceive(NotificationCenter.default.publisher(for: .newEmail)) { _ in

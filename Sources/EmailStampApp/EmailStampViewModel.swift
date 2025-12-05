@@ -1,7 +1,7 @@
 import SwiftUI
 import CryptoKit
 import AppKit
-import UniformTypeIdentifiers
+internal import UniformTypeIdentifiers
 
 class EmailStampViewModel: ObservableObject {
     @Published var subject: String = ""
@@ -95,7 +95,9 @@ class EmailStampViewModel: ObservableObject {
     }
     
     private func generateQRCode(from string: String) -> String {
-        let filter = CIFilter.qrCodeGenerator()
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
+            return ""
+        }
         let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")
         
@@ -116,7 +118,7 @@ class EmailStampViewModel: ObservableObject {
             return ""
         }
         
-        guard let pngData = bitmapImage.representation(using: .png, properties: [:]) else {
+        guard let pngData = bitmapImage.representation(using: NSBitmapImageRep.FileType.png, properties: [:]) else {
             return ""
         }
         

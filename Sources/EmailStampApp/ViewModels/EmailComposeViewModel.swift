@@ -16,10 +16,10 @@ class EmailComposeViewModel: ObservableObject {
     @Published var showPreview: Bool = false
     @Published var emails: [EmailItem] = []
     @Published var selectedEmail: EmailItem?
-    @Published var showPGPSettings: Bool = false
-    @Published var showHeaderFooterSettings: Bool = false
+    @Published var showSettings: Bool = false
     
     @Published var pgpSettings = PGPSettings()
+    @Published var smtpSettings = SMTPSettings()
     
     private let generator = EmailStampGenerator()
     
@@ -66,8 +66,9 @@ class EmailComposeViewModel: ObservableObject {
     }
     
     func updateHash() {
-        let emailContent = "Subject: \(subject)\n\n\(body)"
-        let data = Data(emailContent.utf8)
+        // Build MIME message for hashing
+        let mimeMessage = buildMIMEMessage()
+        let data = Data(mimeMessage.utf8)
         let hash = SHA256.hash(data: data)
         emailHash = hash.compactMap { String(format: "%02x", $0) }.joined()
         
@@ -84,14 +85,15 @@ class EmailComposeViewModel: ObservableObject {
             #endif
         }
         
-        // Generate HTML preview
+        // Generate HTML preview (pass MIME-level hash)
         generatedHTML = generator.generateHTML(
             subject: subject,
             body: body,
             header: header,
             footer: footer,
             includePGP: includePGP && pgpSettings.enabled,
-            pgpSettings: pgpSettings
+            pgpSettings: pgpSettings,
+            emailHash: emailHash
         )
     }
     
@@ -123,7 +125,8 @@ class EmailComposeViewModel: ObservableObject {
             header: header,
             footer: footer,
             includePGP: includePGP && pgpSettings.enabled,
-            pgpSettings: pgpSettings
+            pgpSettings: pgpSettings,
+            emailHash: emailHash
         )
         
         // Sanitize HTML before storing
@@ -213,6 +216,50 @@ class EmailComposeViewModel: ObservableObject {
     
     func selectEmail(_ email: EmailItem) {
         selectedEmail = email
+    }
+    
+    // MARK: - MIME Message Building
+    
+    private func buildMIMEMessage() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone.current
+        let dateString = dateFormatter.string(from: date)
+        
+        // Generate Message-ID
+        let messageID = generateMessageID()
+        
+        // Get From address (use SMTP username if available, otherwise placeholder)
+        let fromAddress = smtpSettings.username.isEmpty ? "sender@example.com" : smtpSettings.username
+        
+        // Build MIME headers
+        var mimeHeaders: [String] = []
+        mimeHeaders.append("MIME-Version: 1.0")
+        mimeHeaders.append("From: \(fromAddress)")
+        mimeHeaders.append("To: \(recipient)")
+        mimeHeaders.append("Subject: \(subject)")
+        mimeHeaders.append("Date: \(dateString)")
+        mimeHeaders.append("Message-ID: \(messageID)")
+        mimeHeaders.append("Content-Type: text/html; charset=UTF-8")
+        mimeHeaders.append("Content-Transfer-Encoding: 8bit")
+        
+        // Build body (just the text body for hashing, not the full HTML)
+        // The hash should represent the actual message content
+        let bodyContent = body.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Combine headers and body
+        let mimeMessage = mimeHeaders.joined(separator: "\r\n") + "\r\n\r\n" + bodyContent
+        
+        return mimeMessage
+    }
+    
+    private func generateMessageID() -> String {
+        let uuid = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let hostname = smtpSettings.server.isEmpty ? "emailstamp.app" : smtpSettings.server
+        return "<\(timestamp).\(uuid)@\(hostname)>"
     }
 }
 
